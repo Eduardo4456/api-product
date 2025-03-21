@@ -4,7 +4,7 @@
 
 ## Descrição
 
-📕 Projeto de aprendisado que busca melhorar o conhecimento em Java usando o Framework Spring, e conhecimento com a integração de Banco de Dados.
+📕 Projeto de aprendisado que busca melhorar o conhecimento em Java usando o Framework Spring, e o conhecimento com a integração de Banco de Dados.
 
 ## Informações
 Tecnologias usadas:
