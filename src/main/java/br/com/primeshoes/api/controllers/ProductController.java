@@ -17,17 +17,20 @@ import br.com.primeshoes.api.services.ProductService;
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {
-	
+
 	@Autowired
 	ProductService productService;
 	
 	@PostMapping
-	public ResponseEntity<Product> createProduct(@RequestBody Product product) {
+	public ResponseEntity<Product> createProduct(@RequestBody Product product)
+	{
 		return new ResponseEntity<>(productService.store(product), HttpStatus.CREATED);
 	}
 	
-	@GetMapping("")
-	public List<Product> listAll() {
+	
+	@GetMapping
+	public List<Product> listAll()
+	{
 		return productService.getAll();
 	}
 }
