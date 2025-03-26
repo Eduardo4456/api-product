@@ -7,8 +7,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.primeshoes.api.entites.Product;
 import br.com.primeshoes.api.repository.ProductRepository;
-import dtos.ProductDTO;
-import mappers.ProductMapper;
+
 @Service
 public class ProductService{
 	
@@ -17,16 +16,16 @@ public class ProductService{
 	
 	/**
 	 * Save new product
-	 * @param productDTO
+	 * @param product
 	 */
-	public Product store(ProductDTO productDTO)
+	public Product store(Product product)
 	{
-		Product product = ProductMapper.toEntity(productDTO);
 		return productRepository.save(product);
 	}
-
-	public List<Product> getALL(){
+	
+	public List<Product> getAll()
+	{
 		return productRepository.findAll();
-		
 	}
+
 }

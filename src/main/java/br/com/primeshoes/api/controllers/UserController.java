@@ -11,27 +11,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.primeshoes.api.entites.Product;
-import br.com.primeshoes.api.services.ProductService;
-import dtos.ProductDTO;
-import mappers.ProductMapper;
+import br.com.primeshoes.api.entites.User;
+import br.com.primeshoes.api.services.UserService;
+import dtos.UserCreatDTO;
+import dtos.UserResponseDTO;
+import mappers.UserMapper;
 
 @RestController
-@RequestMapping("/api/products")
-public class ProductController {
+@RequestMapping("/api/users")
+public class UserController {
 
 	@Autowired
-	ProductService productService;
+	UserService UserService;
 	
 	@PostMapping
-	public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO productDTO) {
-		ProductDTO productResponseDTO = ProductMapper.toDTO(productService.store(productDTO));
-	 return new ResponseEntity<>(productResponseDTO, HttpStatus.CREATED);
+	public ResponseEntity<UserResponseDTO> createUser(@RequestBody UserCreatDTO userCreatDTO) {
+		UserResponseDTO UserResponseDTO = UserService.store(userCreatDTO);
+	 return new ResponseEntity<>(UserResponseDTO, HttpStatus.CREATED);
 	}
 	@GetMapping("/list")
-	public List<Product> listALL(){
+	public List<UserResponseDTO> listALL(){
 		
-		return productService.getALL();
+		return UserService.getALL();
 	}
 	
 }
+

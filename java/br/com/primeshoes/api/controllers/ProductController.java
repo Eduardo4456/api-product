@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.primeshoes.api.entites.Product;
 import br.com.primeshoes.api.services.ProductService;
-import dtos.ProductDTO;
-import mappers.ProductMapper;
 
 @RestController
 @RequestMapping("/api/products")
@@ -24,14 +22,15 @@ public class ProductController {
 	ProductService productService;
 	
 	@PostMapping
-	public ResponseEntity<ProductDTO> createProduct(@RequestBody ProductDTO productDTO) {
-		ProductDTO productResponseDTO = ProductMapper.toDTO(productService.store(productDTO));
-	 return new ResponseEntity<>(productResponseDTO, HttpStatus.CREATED);
-	}
-	@GetMapping("/list")
-	public List<Product> listALL(){
-		
-		return productService.getALL();
+	public ResponseEntity<Product> createProduct(@RequestBody Product product)
+	{
+		return new ResponseEntity<>(productService.store(product), HttpStatus.CREATED);
 	}
 	
+	
+	@GetMapping
+	public List<Product> listAll()
+	{
+		return productService.getAll();
+	}
 }
